@@ -12,13 +12,22 @@ function Movie(props) {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(res => setMovie(res.data))
-      .catch(err => console.log(err.response));
+      .catch(err => console.log(err));
   };
   
   const routeToUpdateForm = e => {
     e.preventDefault();
     console.log(props);
     push(`/update-movie/${movie.id}`);
+  }
+
+  const deleteMovie = (e, id) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:5000/api/movies/${id}`)
+    .then(response => {
+      console.log(response);
+      push('/')
+    })
   }
 
   const saveMovie = () => {
@@ -40,7 +49,7 @@ function Movie(props) {
         Save
       </div>
       <button onClick={routeToUpdateForm}>Update</button>
-      
+      <button onClick={deleteMovie}>Delete Movie</button>
     </div>
   );
 }
