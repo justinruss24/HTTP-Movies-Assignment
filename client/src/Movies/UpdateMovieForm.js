@@ -15,15 +15,14 @@ const UpdateMovie = props => {
     const { push } = useHistory();
 
     const [movie, setMovie] = useState(initialMovie);
-
+    const [movieList] = useState(props.movieList)
     // find the movie and set it to state
     // get rid of the id from params
     // loop through the movie list to find the movie
     // set the movie to state to pre-populate the form
 
     useEffect(() => {
-        console.log("1", props.movieList);
-        const movieToUpdate = props.movieList.find(el => `${el.id}` === id);
+        const movieToUpdate = movieList.find(el => `${el.id}` === id);
         if (movieToUpdate) {
             setMovie(movieToUpdate);
         }
