@@ -26,7 +26,7 @@ const UpdateMovie = props => {
         if (movieToUpdate) {
             setMovie(movieToUpdate);
         }
-    }, [props.movieList, id]);
+    }, [movieList, id]);
 
     const handleChange = e => {
         setMovie({
